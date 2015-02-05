@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DW Tomatoes!</title>
+    <!-- Roboto Font -->
+    <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+
+    <!-- Bootstrap 3 -->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <style type="text/css" media="screen">
+    body {
+      padding-top: 80px;
+      font-family: 'Roboto', sans-serif;
+    }
+    #trailer .modal-dialog {
+      margin-top: 200px;
+      width: 640px;
+      height: 480px;
+    }
+    .hanging-close {
+      position: absolute;
+      top: -12px;
+      right: -12px;
+      z-index: 9001;
+    }
+    #trailer-video {
+      width: 100%;
+      height: 100%;
+    }
+    .movie-tile {
+      margin-bottom: 20px;
+      padding-top: 20px;
+    }
+    .movie-tile:hover {
+      background-color: #EEE;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3)
+    }
+    .scale-media {
+      padding-bottom: 56.25%;
+      position: relative;
+    }
+    .scale-media iframe {
+      border: none;
+      height: 100%;
+      position: absolute;
+      width: 100%;
+      left: 0;
+      top: 0;
+      background-color: white;
+    }
+    .navbar {
+      box-shadow: 0 5px 8px rgba(0, 0, 0, 0.3);
+    }
+    .navbar-header {
+      font-weight: 700;
+    }
+    q {
+      quotes: "\201C" "\201D";
+      color: #757575;
+    }
+    img {
+      border-radius: 2px;
+    }
+    </style>
+    <script type="text/javascript" charset="utf-8">
+    // Pause the video when the modal is closed
+    $(document).on('click', '.hanging-close, .modal-backdrop, .modal', function(event) {
+      // Remove the src so the player itself gets removed, as this is the only
+      // reliable way to ensure the video stops playing in IE
+      $("#trailer-video-container").empty();
+    });
+    // Start playing the video whenever the trailer modal is opened
+    $(document).on('click', '.movie-tile', function(event) {
+      var trailerYouTubeId = $(this).attr('data-trailer-youtube-id')
+      var sourceUrl = 'http://www.youtube.com/embed/' + trailerYouTubeId + '?autoplay=1&html5=1';
+      $("#trailer-video-container").empty().append($("<iframe></iframe>", {
+        'id': 'trailer-video',
+        'type': 'text-html',
+        'src': sourceUrl,
+        'frameborder': 0
+      }));
+    });
+    // Animate in the movies when the page loads
+    $(document).ready(function() {
+      $('.movie-tile').hide().first().show("fast", function showNext() {
+        $(this).next("div").show("fast", showNext);
+      });
+    });
+    </script>
+  </head>
+  
+
+  <body>
+    <!-- Trailer Video Modal -->
+    <div class="modal" id="trailer">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <a href="#" class="hanging-close" data-dismiss="modal" aria-hidden="true">
+            <img src="https://lh5.ggpht.com/v4-628SilF0HtHuHdu5EzxD7WRqOrrTIDi_MhEG6_qkNtUK5Wg7KPkofp_VJoF7RS2LhxwEFCO1ICHZlc-o_=s0#w=24&h=24" />
+          </a>
+          <div class="scale-media" id="trailer-video-container">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Page Content -->
+    <div class="container">
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">DW Movie Trailers</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="0vxOhd4qlnA" data-toggle="modal" data-target="#trailer">
+  <img src="http://ia.media-imdb.com/images/M/MV5BMjIxNTU4MzY4MF5BMl5BanBnXkFtZTgwMzM4ODI3MjE@._V1_SX214_AL_.jpg" width="220" height="342">
+  <h2 class="title">Interstellar</h2>
+  <h4>SF / 169 mins</h4>
+  <h5><q>The best movie I've watched in 2014</q></h5>
+</div><div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="TbQm5doF_Uc" data-toggle="modal" data-target="#trailer">
+  <img src="http://ia.media-imdb.com/images/M/MV5BMTQ1MjQwMTE5OF5BMl5BanBnXkFtZTgwNjk3MTcyMDE@._V1_SX214_AL_.jpg" width="220" height="342">
+  <h2 class="title">Frozen</h2>
+  <h4>Animation / 108 mins</h4>
+  <h5><q>The code never bothered me anyway</q></h5>
+</div><div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="T7A810duHvw" data-toggle="modal" data-target="#trailer">
+  <img src="http://ia.media-imdb.com/images/M/MV5BMTA1ODUzMDA3NzFeQTJeQWpwZ15BbWU3MDgxMTYxNTk@._V1_SX214_AL_.jpg" width="220" height="342">
+  <h2 class="title">About Time</h2>
+  <h4>Romance / 123 mins</h4>
+  <h5><q>Rachel McAdams is so lovely!</q></h5>
+</div><div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="cxCE9gDm1vo" data-toggle="modal" data-target="#trailer">
+  <img src="http://ia.media-imdb.com/images/M/MV5BMTIwMzExNDEwN15BMl5BanBnXkFtZTYwODMxMzg2._V1_SY317_CR1,0,214,317_AL_.jpg" width="220" height="342">
+  <h2 class="title">Gone in Sixty Seconds</h2>
+  <h4>Action / 118 mins</h4>
+  <h5><q>1967 Shelby Mustang GT 500</q></h5>
+</div><div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="SZNuUzyVrmw" data-toggle="modal" data-target="#trailer">
+  <img src="http://images.moviepostershop.com/groundhog-day-movie-poster-1993-1020189656.jpg" width="220" height="342">
+  <h2 class="title">Groundhog Day</h2>
+  <h4>Romantic Comedy / 101 mins</h4>
+  <h5><q>One of my favorite movies from my childhood</q></h5>
+</div><div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="1qLUMSbrlDE" data-toggle="modal" data-target="#trailer">
+  <img src="http://movieposters.2038.net/p/A-Lot-Like-Love.jpg" width="220" height="342">
+  <h2 class="title">A Lot Like Love</h2>
+  <h4>Romantic Comedy / 106 mins</h4>
+  <h5><q>A lot like love story</q></h5>
+</div><div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="ivee8cm55Ao" data-toggle="modal" data-target="#trailer">
+  <img src="http://ia.media-imdb.com/images/M/MV5BMTE5NDk5NTUyN15BMl5BanBnXkFtZTYwNzUyMDA3._V1_SX214_AL_.jpg" width="220" height="342">
+  <h2 class="title">Constantine</h2>
+  <h4>Fantasy / 120 mins</h4>
+  <h5><q>This is Constantine, John Constantine... a**hole</q></h5>
+</div><div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="c3gI9ms8Fdc" data-toggle="modal" data-target="#trailer">
+  <img src="http://ia.media-imdb.com/images/M/MV5BMTM4NjY2MTEzM15BMl5BanBnXkFtZTcwMTk2Njk3OA@@._V1_SX214_AL_.jpg" width="220" height="342">
+  <h2 class="title">The Truman Show</h2>
+  <h4>Drama / 102 mins</h4>
+  <h5><q>In case I don't see ya, good afternoon, good evening, and good night!</q></h5>
+</div><div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="OPVWy1tFXuc" data-toggle="modal" data-target="#trailer">
+  <img src="http://ia.media-imdb.com/images/M/MV5BMzU0NDY0NDEzNV5BMl5BanBnXkFtZTgwOTIxNDU1MDE@._V1_SY317_CR0,0,214,317_AL_.jpg" width="220" height="342">
+  <h2 class="title">The Hobbit: The Desolation of Smaug</h2>
+  <h4>Fantasy / 161 mins</h4>
+  <h5><q>The second of the Hobbit trilogy</q></h5>
+</div><div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="SDnYMbYB-nU" data-toggle="modal" data-target="#trailer">
+  <img src="http://ia.media-imdb.com/images/M/MV5BMTcwNTE4MTUxMl5BMl5BanBnXkFtZTcwMDIyODM4OA@@._V1_SX214_AL_.jpg" width="220" height="342">
+  <h2 class="title">The Hobbit: An Unexpected Journey</h2>
+  <h4>Fantasy / 169 mins</h4>
+  <h5><q>I like this better than the LOR</q></h5>
+</div><div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="iVAgTiBrrDA" data-toggle="modal" data-target="#trailer">
+  <img src="http://ia.media-imdb.com/images/M/MV5BODAzMDgxMDc1MF5BMl5BanBnXkFtZTgwMTI0OTAzMjE@._V1_SX214_AL_.jpg" width="220" height="342">
+  <h2 class="title">The Hobbit: The Battle of the Five Armies</h2>
+  <h4>Fantasy / 161 mins</h4>
+  <h5><q>More actions, less story</q></h5>
+</div><div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="8hP9D6kZseM" data-toggle="modal" data-target="#trailer">
+  <img src="http://ia.media-imdb.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_SX214_AL_.jpg" width="220" height="342">
+  <h2 class="title">Inception</h2>
+  <h4>SF / 147 mins</h4>
+  <h5><q>A dream in a dream in a dream</q></h5>
+</div><div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="KdzH6a-XEGM" data-toggle="modal" data-target="#trailer">
+  <img src="http://ia.media-imdb.com/images/M/MV5BMTY4NjQ5NDc0Nl5BMl5BanBnXkFtZTYwNjk5NDM3._V1_SX214_AL_.jpg" width="220" height="342">
+  <h2 class="title">Love Actually</h2>
+  <h4>Romantic Comedy / 135 mins</h4>
+  <h5><q>Lots of famous actors</q></h5>
+</div><div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="iszwuX1AK6A" data-toggle="modal" data-target="#trailer">
+  <img src="http://ia.media-imdb.com/images/M/MV5BMjIxMjgxNTk0MF5BMl5BanBnXkFtZTgwNjIyOTg2MDE@._V1_SX214_AL_.jpg" width="220" height="342">
+  <h2 class="title">The Wolf of Wall Street</h2>
+  <h4>Drama / 179 mins</h4>
+  <h5><q>He really knows how to pick a movie</q></h5>
+</div><div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="zJGleGyahC8" data-toggle="modal" data-target="#trailer">
+  <img src="http://ia.media-imdb.com/images/M/MV5BMTQ4MzQ3NjA0N15BMl5BanBnXkFtZTgwODQyNjQ4MDE@._V1_SX214_AL_.jpg" width="220" height="342">
+  <h2 class="title">The Best Offer</h2>
+  <h4>Thriller / 131 mins</h4>
+  <h5><q>Old man's first love</q></h5>
+</div><div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="HddkucqSzSM" data-toggle="modal" data-target="#trailer">
+  <img src="http://ia.media-imdb.com/images/M/MV5BODYwNDYxNDk1Nl5BMl5BanBnXkFtZTgwOTAwMTk2MDE@._V1_SX214_AL_.jpg" width="220" height="342">
+  <h2 class="title">The Secret Life of Walter Mitty</h2>
+  <h4>Drama / 114 mins</h4>
+  <h5><q>Great movie, but you can do better this Ben</q></h5>
+</div><div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="KHGHEpUeUwo" data-toggle="modal" data-target="#trailer">
+  <img src="http://ia.media-imdb.com/images/M/MV5BMTEyMDg4MDU4MjdeQTJeQWpwZ15BbWU4MDQyOTc3MjIx._V1_SX214_AL_.jpg" width="220" height="342">
+  <h2 class="title">Penguins of Madagascar</h2>
+  <h4>Animation / 92 mins</h4>
+  <h5><q>Cute and cuddly penguins!</q></h5>
+</div><div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="pK2zYHWDZKo" data-toggle="modal" data-target="#trailer">
+  <img src="http://ia.media-imdb.com/images/M/MV5BMjEwMDk2NzY4MF5BMl5BanBnXkFtZTgwNTY2OTcwMDE@._V1_SX214_AL_.jpg" width="220" height="342">
+  <h2 class="title">X-MEN: Days of Future Past</h2>
+  <h4>SF / 134 mins</h4>
+  <h5><q>Wolverine goes back in time</q></h5>
+</div>
+    </div>
+  </body>
+</html>
