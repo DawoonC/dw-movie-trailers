@@ -180,6 +180,14 @@ movies = [
     x_men_dofp,
 ]
 
-# create a new HTML file with movie data
-# this will open a new page in your browser
-fresh_tomatoes.open_movies_page(movies)
+def main():
+    """
+    Main function of this module
+    Create a new HTML file with movie data
+    This will open a new page in your browser
+    """
+    fresh_tomatoes.open_movies_page(movies)
+
+# Executed if this module is ran as a primary module
+if __name__ == "__main__":
+    main()
